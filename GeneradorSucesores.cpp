@@ -7,9 +7,11 @@ vector<Movimiento> GeneradorSucesores::generarMovimientos(const Estado &estado)
 
     char jugador = estado.getTurno();
     Tablero tablero = estado.getTablero();
+    int cantidadFichas = tablero.contarFichas(jugador);
 
     /*Genera los posibles movimientos de colocación de fichas, el unico criterio es que la casilla
     se encuentre vacia*/
+    if(cantidadFichas >3){
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -25,6 +27,7 @@ vector<Movimiento> GeneradorSucesores::generarMovimientos(const Estado &estado)
             }
         }
     }
+}
 
     /*Genera los posibles movimientos de mover una ficha, el criterio es que la casilla este vacia, la ficha
     sea del jugador, puesto que no puede mover la ficha del reival y que el movimiento tenga un valor de 1 de

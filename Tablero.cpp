@@ -43,6 +43,12 @@ bool Tablero::colocarFicha(int fila, int columna, char jugador)
     {
         return false;
     }
+
+    /*Si ya hay 3 fichas en algun simbolo no se puede colocar otra ficha más*/
+    if (contarFichas(jugador) >= 3)
+{
+    return false;
+}
     /*En cualquier otra condición es valido colocar la ficha, po(r lo que retornamos un valor verdadero y se coloca
     la ficha en la casilla correspondiente ejemplo: Colocar x en (0,2), Colocar o en (1,0)
     */
@@ -144,6 +150,25 @@ bool Tablero::haylinea(char jugador) const
         return true;
     }
     return false;
+}
+/*Cada simbolo tiene un maximo de 3 fichas
+*/
+int Tablero::contarFichas(char jugador) const
+{
+    int contador = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (casillas[i][j] == jugador)
+            {
+                contador++;
+            }
+        }
+    }
+
+    return contador;
 }
 
 /*Recorre toda la matriz para revisar si esta llena, si una sola casilla esta vacia retornara true

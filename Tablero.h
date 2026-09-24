@@ -17,6 +17,8 @@ public:
    bool haylinea(char jugador) const;
    bool estaLleno() const;
 
+   int contarFichas(char jugador) const;
+   
    char getCasilla(int fila, int columna) const;
 
    void mostrar() const;
